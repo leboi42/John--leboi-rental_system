@@ -2,14 +2,28 @@
 declare(strict_types=1);
 session_start();
 
-/*
- * Update these values with the MySQL database details from your hosting provider.
- * On many shared hosts, DB_HOST is "localhost".
- */
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'your_database_name');
-define('DB_USER', 'your_database_user');
-define('DB_PASS', 'your_database_password');
+$databaseConfigPath = __DIR__ . '/config.local.php';
+if (!is_file($databaseConfigPath)) {
+    throw new RuntimeException(
+        'Database configuration is missing. Copy config.local.php.example to config.local.php and enter your database settings.'
+    );
+}
+
+$databaseConfig = require $databaseConfigPath;
+if (!is_array($databaseConfig)) {
+    throw new RuntimeException('Database configuration must return an array.');
+}
+
+foreach (['host', 'name', 'user', 'pass'] as $key) {
+    if (!isset($databaseConfig[$key]) || !is_string($databaseConfig[$key])) {
+        throw new RuntimeException('Database configuration is missing a valid "' . $key . '" value.');
+    }
+}
+
+define('DB_HOST', $databaseConfig['host']);
+define('DB_NAME', $databaseConfig['name']);
+define('DB_USER', $databaseConfig['user']);
+define('DB_PASS', $databaseConfig['pass']);
 
 function db(): PDO {
     static $pdo = null;

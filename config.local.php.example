@@ -1,0 +1,9 @@
+<?php
+declare(strict_types=1);
+
+return [
+    'host' => 'your_mysql_host',
+    'name' => 'your_database_name',
+    'user' => 'your_database_username',
+    'pass' => 'your_database_password',
+];

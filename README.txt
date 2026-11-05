@@ -22,14 +22,18 @@ IMPORTANT LIMITATIONS
 - Test with sample data before using real tenant information.
 - Make regular database backups and use a strong administrator password.
 
-INSTALLATION ON SHARED PHP HOSTING
+INSTALLATION ON INFINITYFREE OR OTHER SHARED PHP HOSTING
 1. In your hosting control panel, create a MySQL database and database user.
-2. Grant the database user all privileges on that database.
-3. Open phpMyAdmin, select the new database, and import database.sql.
-4. Edit config.php and enter the exact database host, database name, username,
-   and password shown by your hosting provider.
-5. Upload the contents of this ZIP to your website's public_html folder
-   (or the document root assigned to your domain).
+2. Grant the user access to the database. Record the exact database hostname,
+   database name, username, and password displayed by the provider.
+3. Open phpMyAdmin from the hosting control panel, select the new database,
+   and import database.sql.
+4. Copy config.local.php.example to config.local.php. Enter the database details
+   in config.local.php; do not put real credentials in config.php or GitHub.
+   This private file is excluded by .gitignore.
+5. Upload the PHP files and assets to your website's document root. To use the
+   PHP/MySQL app, make sure index.php is the default page; index.html is a
+   separate browser-only demo and should not take precedence.
 6. Visit https://YOUR-DOMAIN/create_admin.php and create your administrator.
 7. IMPORTANT: delete create_admin.php from the server immediately after creating
    the administrator.
@@ -41,6 +45,8 @@ PHONE UPLOAD NOTES
 - Use your hosting provider's File Manager in Chrome, or its supported upload
   method, to upload the extracted files into the website document root.
 - Import database.sql using phpMyAdmin in the hosting control panel.
+- Create config.local.php on the server with the credentials from your hosting
+  control panel. Never commit or share this file.
 - Do not upload the ZIP as the only file unless your host's installer extracts
   it into the correct document root.
 
