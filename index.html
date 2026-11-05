@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f2">
+  <meta name="description" content="A simple, private rental property management workspace.">
+  <title>Haven — Rental Management</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" data-page="dashboard"><span class="brand-mark">H</span><span>haven<span class="brand-period">.</span></span></a>
+      <div class="workspace-label">PROPERTY WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-page="dashboard"><span class="nav-icon">⌂</span>Overview</button>
+        <button class="nav-link" data-page="properties"><span class="nav-icon">▦</span>Properties</button>
+        <button class="nav-link" data-page="tenants"><span class="nav-icon">♙</span>Tenants</button>
+        <button class="nav-link" data-page="leases"><span class="nav-icon">▤</span>Leases</button>
+        <button class="nav-link" data-page="payments"><span class="nav-icon">＄</span>Payments</button>
+        <button class="nav-link" data-page="maintenance"><span class="nav-icon">⌁</span>Maintenance</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="privacy-note"><span class="privacy-dot"></span>Your data stays in this browser</div>
+        <button class="nav-link" data-action="backup"><span class="nav-icon">⇩</span>Export backup</button>
+        <button class="nav-link" data-action="restore"><span class="nav-icon">↻</span>Restore demo data</button>
+        <div class="profile"><div class="avatar">AM</div><div><strong>Alex Morgan</strong><small>Property manager</small></div></div>
+      </div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobile-menu" aria-label="Open navigation">☰</button>
+        <div class="breadcrumbs">Workspace <span>/</span> <strong id="crumb-current">Overview</strong></div>
+        <div class="topbar-actions"><span class="today-label" id="today-label"></span><button class="icon-button" data-action="backup" aria-label="Export backup" title="Export backup">⇩</button><div class="avatar top-avatar">AM</div></div>
+      </header>
+      <div id="page-content" class="page-content" aria-live="polite"></div>
+    </main>
+  </div>
+  <div class="toast-region" id="toast-region" aria-live="polite"></div>
+  <dialog id="entity-dialog" class="entity-dialog">
+    <form id="entity-form">
+      <div class="dialog-heading"><div><span class="eyebrow" id="dialog-eyebrow">WORKSPACE</span><h2 id="dialog-title">Add record</h2></div><button type="button" class="dialog-close" data-action="close-dialog" aria-label="Close dialog">×</button></div>
+      <div id="dialog-fields" class="form-grid"></div>
+      <div class="dialog-actions"><button type="button" class="button button-quiet" data-action="close-dialog">Cancel</button><button type="submit" class="button button-primary">Save record</button></div>
+    </form>
+  </dialog>
+</body>
+</html>
