@@ -1,0 +1,5 @@
+<?php require_once 'config.php'; require_login(); $pageTitle = $pageTitle ?? 'Dashboard'; ?>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title><?=e($pageTitle)?> | John Leboi</title><link rel="stylesheet" href="assets/style.css"></head><body>
+<header class="topbar"><a class="brand" href="index.php"><span class="brand-mark small">JL</span><span>John Leboi <small>Rental Management</small></span></a><div class="user-area">Admin: <?=e($_SESSION['admin_name'] ?? 'Admin')?> <a href="logout.php">Log out</a></div></header>
+<div class="layout"><aside class="sidebar"><a href="index.php">▦ Dashboard</a><a href="houses.php">⌂ Houses</a><a href="tenants.php">♙ Tenants</a><a href="payments.php">KSh Payments</a><a href="reports.php">▤ Reports</a></aside><main class="content"><div class="page-heading"><h1><?=e($pageTitle)?></h1></div>
+<?php if (!empty($_SESSION['flash'])): $f=$_SESSION['flash']; unset($_SESSION['flash']); ?><div class="notice <?=e($f['type'])?>"><?=e($f['message'])?></div><?php endif; ?>
